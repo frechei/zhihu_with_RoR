@@ -1,0 +1,31 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+
+
+body {
+  padding-top: 70px;
+}
+nav {
+  font-size: large;
+  background-color: darkseagreen;
+}
+.navbar-brand {
+  font-size: xx-large;
+}
+#ask {
+  width: 80px;
+  font-size: large;
+}
+#search_input {
+  width: 320px;
+}
+
+form {
+  max-width: 500px;
+}
+
+#back1 {
+  position: relative;
+}
