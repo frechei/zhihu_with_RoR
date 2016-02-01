@@ -15,8 +15,12 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -27,7 +31,11 @@ gem 'font-awesome-rails', "~> 4.3"
 gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~>3.4.1'
 gem "carrierwave", "~> 0.10.0"
-gem 'ckeditor'
+gem 'mini_magick'
+gem 'simditor'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
