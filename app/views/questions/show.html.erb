@@ -1,6 +1,5 @@
 <% title(@question.issue) %>
 
-
 <div class="row" id="admin">
   <div class="col-md-9">
     <div class="page-header" id="head1">
@@ -17,10 +16,23 @@
         <%= sanitize(@question.description) %>
       </header>
     </div>
+
     <div id="head2">
-      <h4><%=  %>个回答</h4>
+      <h4><%= @question.answers.count  %>个回答</h4>
     </div>
-    啊哈哈
+
+
+      <ul id="all_answers">
+          <% for i in 0..(@question.answers.count-1) do%>
+          <li class="every_answer"><%= sanitize(@question.answers[i].content) %></li>
+          <% end %>
+      </ul>
+
+
+    <div>
+      <%= render 'answers/form', question: @question, answer: @answer %>
+    </div>
+
 
 
   </div>
@@ -30,10 +42,6 @@
   </div>
 </div>
 
-<header>
-  <h1></h1>
-
-</header>
 
 
 

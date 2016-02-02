@@ -1,0 +1,4 @@
+<%= simple_form_for([question, answer]) do |f| %>
+  <%= f.input :content, label: "你的答案：", input_html: { id: 'editor' } %>
+  <%= f.button :submit, class: "btn-primary", value: "发布回答" %>
+<% end %>

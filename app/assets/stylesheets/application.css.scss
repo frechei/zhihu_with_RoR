@@ -3,11 +3,14 @@
 @import "font-awesome";
 @import "simditor";
 @import "jquery-ui";
-
+@import "answers";
 
 .page-header {
   position: relative;
   padding-bottom: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  border-bottom: 1px solid #DADADA;
   &:first-child {
     margin: 10px;
   }
@@ -17,7 +20,8 @@
 }
 
 #head2 {
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid #DADADA;
+  margin: 10px;
 }
 ul.actions {
   @extend .list-unstyled;
@@ -47,9 +51,24 @@ nav {
 }
 
 form {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 #back1 {
   position: relative;
+}
+
+#all_answers {
+  padding-left: 0px;
+  margin: 10px;
+  .every_answer {
+    padding: 10px;
+
+    border-bottom: 1px solid #DADADA;
+    list-style-type: none;
+  }
+}
+
+.fa {
+  margin:0 11px 0 15px;
 }

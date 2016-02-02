@@ -52,28 +52,45 @@
         <form class="navbar-form navbar-left" role="search">
           <%= link_to "提问", new_question_path, class: "btn btn-default", role: "button", id: "ask" %>
         </form>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-             aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#"><span class="glyphicon glyphicon-user"
-                                  aria-hidden="true"></span>&nbsp;&nbsp;我的主页</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-envelope"
-                                  aria-hidden="true"></span>&nbsp;&nbsp;私信</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-cog"
-                                  aria-hidden="true"></span>&nbsp;&nbsp;设置</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-off"
-                                  aria-hidden="true"></span>&nbsp;&nbsp;退出</a></li>
-          </ul>
-        </li>
+
+        <% unless user_signed_in? %>
+          <li class="<%= "active" if current_page?("/users/sign_up") %>">
+            <%= link_to "注册", new_user_registration_path %>
+          </li>
+          <li class="<%= "active" if current_page?("/users/sign_in") %>">
+            <%= link_to "登陆", new_user_session_path %>
+          </li>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><span class="glyphicon glyphicon-user"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;我的主页</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-envelope"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;私信</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-cog"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;设置</a></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to fa_icon("power-off") + "退出", destroy_user_session_path,
+                              method: :delete %></li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 </header>
 <div class="container">
-<%= yield %>
+  <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key %>">
+      <%= message %>
+    </div>
+  <% end %>
+  <%= yield %>
 </div>
 </body>
 </html>
