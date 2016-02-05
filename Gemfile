@@ -33,11 +33,12 @@ gem 'devise', '~>3.4.1'
 gem "carrierwave", "~> 0.10.0"
 gem 'mini_magick'
 gem 'simditor'
-
+gem 'letter_avatar'
+gem 'chinese_pinyin'
 
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

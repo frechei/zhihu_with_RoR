@@ -1,0 +1,40 @@
+<% title("注册") %>
+
+
+
+<div class="zh-container">
+  <div class="zh-main">
+    <div class="zh-header">
+      <h1 class="zh-title">知乎</h1>
+      <h2 class="zh-subtitle">与世界分享你的装逼技巧</h2>
+      <%= render 'shared/error_messages' %>
+    </div>
+    <div class="zh-form">
+      <div class="zh-tab">
+        <h3 class="sign">注册</h3>
+      </div>
+      <%= form_for(@user, :html => {:id =>'zh-form-signup'}) do |f| %>
+        <div class="zh-form-textinput">
+          <div class="zh-input-wrapper">
+            <%= f.label :name, "昵称" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="zh-input-wrapper">
+            <%= f.label :email, "电子邮件" %>
+            <%= f.email_field :email %>
+          </div>
+          <div class="zh-input-wrapper">
+            <%= f.label :password, "密码（不少于6位）" %>
+            <%= f.password_field :password %>
+          </div>
+          <div class="zh-input-wrapper">
+            <%= f.label :password_confirmation, "再次输入密码" %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+        <%= f.submit "Create my account", class: "btn btn-primary zh-button-big", value: "注册知乎" %>
+        <span class="float-left">社交帐号登录</span>
+      <% end %>
+    </div>
+  </div>
+</div>

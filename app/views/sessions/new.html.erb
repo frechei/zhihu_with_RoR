@@ -1,0 +1,30 @@
+<% title("登陆") %>
+<div class="zh-container">
+  <div class="zh-main">
+    <div class="zh-header">
+      <h1 class="zh-title">知乎</h1>
+      <h2 class="zh-subtitle">与世界分享你的装逼技巧</h2>
+    </div>
+    <div class="zh-tab">
+      <h3 class="sign">登录</h3>
+    </div>
+    <%= form_for(:session, url: sessions_path, :html => {:id =>'zh-form-login'}) do |f| %>
+      <div class="zh-form-textinput">
+        <div class="zh-input-wrapper">
+          <%= f.label :email, "电子邮件" %>
+          <%= f.email_field :email %>
+        </div>
+        <div class="zh-input-wrapper">
+          <%= f.label :password, "密码（不少于6位）" %>
+          <%= f.password_field :password %>
+        </div>
+      </div>
+      <%= f.submit "Create my account", class: "btn btn-primary zh-button-big", value: "开始装逼" %>
+      <div class="zh-remember float-left">
+        <input id="zh-id-remember" type="checkbox" name="remember" />
+        <label for="zh-id-remember">记住我</label>
+      </div>
+      <%= link_to '无法装逼?', new_user_path, class: "float-right" %>
+    <% end %>
+  </div>
+</div>

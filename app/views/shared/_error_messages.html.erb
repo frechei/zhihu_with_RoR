@@ -1,0 +1,12 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      发生<%= @user.errors.count %>个错误！
+    </div>
+    <ol>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+  </div>
+<% end %>

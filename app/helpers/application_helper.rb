@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include LetterAvatar::AvatarHelper
   def title(*parts)
     unless parts.empty?
       content_for :title do

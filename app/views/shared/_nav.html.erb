@@ -1,0 +1,63 @@
+<header>
+  <nav class="navbar  navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "知乎", root_path, class: "navbar-brand" %>
+        <!--<a class="navbar-brand" href="#">知乎</a>-->
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" id="search_input"
+                   placeholder="搜索问题、话题或人">
+          </div>
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+        </form>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "首页", root_path %></li>
+          <li><a href="#">话题</a></li>
+          <li><a href="#">发现</a></li>
+          <li><a href="#">消息</a></li>
+        </ul>
+
+
+        <ul class="nav navbar-nav navbar-right">
+          <form class="navbar-form navbar-left" role="search">
+            <%= link_to "提问", new_question_path, class: "btn btn-default", role: "button", id: "ask" %>
+          </form>
+          <% if sign_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+               aria-haspopup="true" aria-expanded="false"><%= "current_user.email" %><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><span class="glyphicon glyphicon-user"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;我的主页</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-envelope"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;私信</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-cog"
+                                    aria-hidden="true"></span>&nbsp;&nbsp;设置</a></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to fa_icon("power-off") + "退出", "destroy_user_session_path",
+                              method: :delete %></li>
+            </ul>
+          </li>
+          <% else %>
+            <li><%= link_to "注册", new_user_path  %></li>
+            <li><%= link_to "登陆", new_session_path %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
