@@ -10,10 +10,12 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
 
+  mount_uploader :avatar, AvatarUploader
+
   def username_for_avatar
     # Translate chinese hanzi to pinyin
     # https://github.com/flyerhzm/chinese_pinyin
-    Pinyin.t(self.username)
+    Pinyin.t(self.name)
   end
 
   def User.new_remember_token

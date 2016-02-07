@@ -3,7 +3,10 @@
   <aside class="row">
     <section>
       <h1>
-        <%= letter_avatar_for(user.username_for_avatar, 200) %>
+
+          <%= image_tag(@user.avatar_url(:normal)) %>
+          <%= letter_avatar_tag(@user.username_for_avatar, 50, class: 'av') %>
+
         <%= @user.name %>
       </h1>
     </section>

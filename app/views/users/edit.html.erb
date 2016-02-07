@@ -1,0 +1,36 @@
+<% title("设置") %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name, "昵称" %>
+        <%= f.text_field :name, class: "form-control" %>
+
+        <%= f.label :email, "电子邮件" %>
+        <%= f.email_field :email, class: "form-control" %>
+
+        <%= f.label :password, "密码（不少于6位）" %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <%= f.label :password_confirmation, "再次输入密码" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+        <br>
+
+        <b>上传头像</b>
+        <%= f.file_field :avatar, value: "上传头像" %>
+        <%= f.hidden_field :avatar_cache %>
+        <br>
+        <% unless @user.avatar.blank? %>
+          <%= image_tag(@user.avatar_url(:normal)) %>
+        <% else %>
+          <%= letter_avatar_tag(@user.username_for_avatar, 50, class: 'av') %>
+        <% end %>
+        <br><br>
+      <%= f.submit "保存", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+
+
+  </div>
+</div>

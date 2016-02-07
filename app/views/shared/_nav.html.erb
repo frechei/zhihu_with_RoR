@@ -45,8 +45,7 @@
                                     aria-hidden="true"></span>&nbsp;&nbsp;我的主页</a></li>
               <li><a href="#"><span class="glyphicon glyphicon-envelope"
                                     aria-hidden="true"></span>&nbsp;&nbsp;私信</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-cog"
-                                    aria-hidden="true"></span>&nbsp;&nbsp;设置</a></li>
+              <li><%= link_to fa_icon("cog") + "设置", edit_user_path(current_user) %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to fa_icon("power-off") + "退出", "destroy_user_session_path",
                               method: :delete %></li>
