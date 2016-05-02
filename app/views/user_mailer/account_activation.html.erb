@@ -1,0 +1,13 @@
+<h1>端装的知乎</h1>
+
+<p>
+  你好！<%= @user.name %>
+</p>
+
+<p>
+  欢迎来到端装的知乎！点击以下链接激活帐号：
+</p>
+
+<%= link_to "激活", edit_account_activation_url(@user.activation_token,
+                                                email: @user.email) %>
+

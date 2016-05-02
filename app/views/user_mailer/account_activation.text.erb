@@ -1,0 +1,4 @@
+你好！ <%= @user.name %>
+
+欢迎加入端装的知乎！点击以下链接激活帐号：
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
