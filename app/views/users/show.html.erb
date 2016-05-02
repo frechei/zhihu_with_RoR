@@ -5,10 +5,17 @@
       <h1>
 
           <%= image_tag(@user.avatar_url(:normal)) %>
+
           <%= letter_avatar_tag(@user.username_for_avatar, 50, class: 'av') %>
 
         <%= @user.name %>
       </h1>
+      <% if current_user.admin?%>
+        <%= link_to "删除用户", @user, method: :delete,
+                    data: { confirm: "确定？" } %>
+      <% end %>
+
+      <%= render 'shared/stats' %>
     </section>
   </aside>
 </div>

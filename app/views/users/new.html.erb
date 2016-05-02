@@ -1,7 +1,5 @@
 <% title("注册") %>
 
-
-
 <div class="zh-container">
   <div class="zh-main">
     <div class="zh-header">
@@ -33,7 +31,10 @@
           </div>
         </div>
         <%= f.submit "Create my account", class: "btn btn-primary zh-button-big", value: "注册知乎" %>
-        <span class="float-left">社交帐号登录</span>
+        <span class="float-left">社交帐号登录</span><br/>
+        <div class="float-right">
+        <%= link_to "已有帐号，登陆", login_path %>
+        </div>
       <% end %>
     </div>
   </div>

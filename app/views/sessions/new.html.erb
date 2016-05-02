@@ -8,7 +8,7 @@
     <div class="zh-tab">
       <h3 class="sign">登录</h3>
     </div>
-    <%= form_for(:session, url: sessions_path, :html => {:id =>'zh-form-login'}) do |f| %>
+    <%= form_for(:session, url: login_path, :html => {:id =>'zh-form-login'}) do |f| %>
       <div class="zh-form-textinput">
         <div class="zh-input-wrapper">
           <%= f.label :email, "电子邮件" %>
@@ -20,11 +20,20 @@
         </div>
       </div>
       <%= f.submit "Create my account", class: "btn btn-primary zh-button-big", value: "开始装逼" %>
+
+
       <div class="zh-remember float-left">
-        <input id="zh-id-remember" type="checkbox" name="remember" />
-        <label for="zh-id-remember">记住我</label>
+        <!--<input id="zh-id-remember" type="checkbox" name="remember" />-->
+        <!--<label for="zh-id-remember">记住我</label>-->
+
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+          <%= f.check_box :remember_me %>
+          <span>记住我</span>
+        <% end %>
       </div>
-      <%= link_to '无法装逼?', new_user_path, class: "float-right" %>
+      <%= link_to '无法装逼?', new_password_reset_path, class: "float-right" %>
     <% end %>
   </div>
 </div>
+<br><br>
+<div class="container"><p>新用户？<%= link_to "注册", signup_path %></p></div>

@@ -80,3 +80,18 @@ a {
     margin: 0 0 18px 0;
   }
 }
+
+.checkbox {
+  margin-top: -1px;
+  margin-bottom: 1px;
+//  float: left;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}

@@ -36,24 +36,23 @@
           <form class="navbar-form navbar-left" role="search">
             <%= link_to "提问", new_question_path, class: "btn btn-default", role: "button", id: "ask" %>
           </form>
-          <% if sign_in? %>
+          <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false"><%= "current_user.email" %><span class="caret"></span></a>
+               aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#"><span class="glyphicon glyphicon-user"
-                                    aria-hidden="true"></span>&nbsp;&nbsp;我的主页</a></li>
+              <li><%= link_to fa_icon("user") + "我的主页", user_path(current_user) %></li>
               <li><a href="#"><span class="glyphicon glyphicon-envelope"
                                     aria-hidden="true"></span>&nbsp;&nbsp;私信</a></li>
               <li><%= link_to fa_icon("cog") + "设置", edit_user_path(current_user) %></li>
               <li role="separator" class="divider"></li>
-              <li><%= link_to fa_icon("power-off") + "退出", "destroy_user_session_path",
+              <li><%= link_to fa_icon("power-off") + "退出", logout_path,
                               method: :delete %></li>
             </ul>
           </li>
           <% else %>
             <li><%= link_to "注册", new_user_path  %></li>
-            <li><%= link_to "登陆", new_session_path %></li>
+            <li><%= link_to "登陆", login_path %></li>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
