@@ -1,0 +1,5 @@
+<% if user.avatar_url(:normal) != nil %>
+  <%= image_tag(user.avatar_url(:normal)) %>
+<% else %>
+  <%= letter_avatar_tag(user.username_for_avatar, 50, class: 'av') %>
+<% end %>

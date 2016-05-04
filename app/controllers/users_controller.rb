@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destory]
+  before_action :logged_in_user, only: [:edit, :update, :destory, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     if @user.update_attributes(user_params)
       flash[:success] = "修改成功"
-      sign_in(@user)
+      log_in(@user)
       redirect_to @user
     else
       render 'edit'
@@ -43,6 +43,20 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "用户删除成功"
     redirect_to root_url
+  end
+
+  def following
+    @title = "关注了的人"
+    @user = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_form'
+  end
+
+  def followers
+    @title = "关注我的人"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_form'
   end
 
   private

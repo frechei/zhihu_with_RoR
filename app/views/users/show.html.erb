@@ -3,11 +3,7 @@
   <aside class="row">
     <section>
       <h1>
-
-          <%= image_tag(@user.avatar_url(:normal)) %>
-
-          <%= letter_avatar_tag(@user.username_for_avatar, 50, class: 'av') %>
-
+        <%= render partial: "avatar", locals: {user: @user} %>
         <%= @user.name %>
       </h1>
       <% if current_user.admin?%>
@@ -15,7 +11,11 @@
                     data: { confirm: "确定？" } %>
       <% end %>
 
-      <%= render 'shared/stats' %>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+
+      <%= render 'follow_form' if logged_in? %>
     </section>
   </aside>
 </div>

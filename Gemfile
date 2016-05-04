@@ -1,4 +1,5 @@
-source 'https://ruby.taobao.org/'
+
+source 'https://gems.ruby-china.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -21,6 +22,7 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
+gem 'faker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -36,6 +38,8 @@ gem 'simditor'
 gem 'letter_avatar'
 gem 'chinese_pinyin'
 
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -64,8 +68,5 @@ group :test do
   gem 'capybara', '~> 2.6.0'
 end
 
-group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
-end
+
 
