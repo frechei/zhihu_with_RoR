@@ -1,0 +1,14 @@
+<div id="location">
+	<% if user.location == nil || user.location.gsub(/\s+/,'') == "" %>
+	<span class="location item"><a href="javascript:;" class="zg-link-litblue-normal location-link" name="edit">填写居住地</a></span>
+	<% else %>
+	 <span class="location item"><%= user.location %></span>
+	<% end %>
+	<% if user.vocation == nil || user.vocation.gsub(/\s+/,'') == "" %>
+	<span class="business item"><a href="javascript:;" class="zg-link-litblue-normal location-link" name="edit">填写行业</a></span>
+	<% else %>
+	 <span class="location item"><%= user.vocation %></span>
+	<% end %>
+	<span class="gender item"><%= fa_icon("#{user.gender}") %></span>
+	<button type="button" class="btn btn-default btn-xs" id="edit-location"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>修改</button>
+</div>

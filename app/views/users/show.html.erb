@@ -1,22 +1,109 @@
 <% title(@user.name) %>
-<div>
-  <aside class="row">
-    <section>
-      <h1>
-        <%= render partial: "avatar", locals: {user: @user} %>
-        <%= @user.name %>
-      </h1>
-      <% if current_user.admin?%>
-        <%= link_to "删除用户", @user, method: :delete,
-                    data: { confirm: "确定？" } %>
-      <% end %>
 
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
+<div class="row">
+  <div class="col-md-9">
 
-      <%= render 'follow_form' if logged_in? %>
-    </section>
-  </aside>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <header>
+          <h1><%= @user.name %></h1>
+          <h5>
+          <% if current_user.admin?%>
+            <%= link_to "删除用户", @user, remote: true, method: :delete,
+                          data: { confirm: "确定？" } %>
+          <% end %>
+          </h5>
+          <div class="item"> 
+            <%= render partial: "avatar", locals: {user: @user} %>
+            <% if current_user?(@user) %>              
+              <div class="info">
+                <%= fa_icon("map-marker") %>        
+                <%= render partial: "location", locals: {user: @user} %>
+                <%= render partial: "location_form", locals: {user: @user} %>
+              </div>
+
+              <div class="info">
+                <%= fa_icon("briefcase") %>
+                <%= render partial: "working", locals: {user: @user} %>
+                <%= render partial: "working_form", locals: {user: @user} %> 
+              </div>
+
+              <div class="info">
+                <%= fa_icon("graduation-cap") %>
+                <%= render partial: "education", locals: {user: @user} %>
+                <%= render partial: "education_form", locals: {user: @user} %>                 
+              </div>
+
+              <div class="statement">
+                <%= render partial: "statements", locals: {user: @user} %>
+                <%= render partial: "statements_form", locals: {user: @user} %> 
+              </div>
+
+            <% else %>
+              <div class="info">
+                <%= fa_icon("map-marker") %>     
+                <span class="location item"><%= @user.location %></span>
+                <span class="location item"><%= @user.vocation %></span>
+                <span class="gender item"><%= fa_icon("#{@user.gender}") %></span>
+              </div>
+
+              <% unless @user.company == nil || @user.company.gsub(/\s+/,'') == ""  && 
+                  (@user.position == nil || @user.position.gsub(/\s+/,'') == "") %>
+                <div class="info">
+                  <%= fa_icon("briefcase") %>
+                  <span class="working item"><%= @user.company %></span>
+                  <span class="working item"><%= @user.position %></span>
+                </div>
+              <% end %>
+
+              <% unless @user.education == nil || @user.education.gsub(/\s+/,'') == ""  && (@user.major == nil || @user.major.gsub(/\s+/,'') == "") %>
+                <div class="info">
+                  <%= fa_icon("graduation-cap") %>
+                  <span class="education item"><%= @user.education %></span>
+                  <span class="education item"><%= @user.major %></span>
+                </div>
+              <% end %>
+
+              <% unless @user.statements == nil || @user.statements.gsub(/\s+/,'') == "" %>
+                <div class="statement">
+                  <span class="statements item"><%= @user.statements %></span>
+                </div>
+              <% end %>
+            <% end %>
+
+              <div class="agree-thanks">
+                <span class="zm-profile-header-info-title">获得</span>
+                <span class="zm-profile-header-user-agree">
+                  <%= fa_icon("heart-o") %><strong>0</strong>赞同
+                </span>
+                <span class="zm-profile-header-user-thanks">
+                  <%= fa_icon("thumbs-o-up") %><strong>0</strong>感谢
+                </span>
+                <% if current_user?(@user) %>
+                  <%= link_to '完善我的资料', edit_user_path, class: "btn btn-success btn-xs" %>
+                <% elsif %>                 
+                  <%= render 'follow_form' if logged_in? %>
+                <% end %>
+              </div>
+              <!-- <div class="info"><%= fa_icon("pencil") %></div> -->
+          </div>
+        </header>
+      </div>
+      <div class="panel-footer">
+        <%= link_to fa_icon("home"), user_path(@user), class: "fa-2x" %>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">最新动态</div>
+      <div class="panel-body">
+        Panel content
+      </div>
+    </div>   
+  </div>
+
+  <div class="col-md-3">
+    <%= render 'shared/stats' %>
+  </div>
 </div>
 

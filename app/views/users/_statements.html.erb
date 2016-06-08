@@ -1,0 +1,9 @@
+<div id="statements">
+  <% if user.statements == nil || user.statements.gsub(/\s+/,'') == "" %>
+    <%= fa_icon("pencil") %>
+    <span class="info-empty-wrap"><a href="javascript:;" name="edit" class="zg-link-litblue-normal statements-link">填写个人简介</a></span>
+  <% else %>
+  	<span class="statements item"><%= user.statements %></span>
+    <button type="button" class="btn btn-default btn-xs" id="edit-statements"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>修改</button>
+  <% end %>
+</div>

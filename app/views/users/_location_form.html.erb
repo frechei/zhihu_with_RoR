@@ -1,0 +1,27 @@
+<div id="location_form">
+  <div class="row">
+    <%= form_for @user, remote: true, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+      <div class="col-lg-3">
+        <div class="input-group input-group-sm">
+          <%= f.text_field :location, class: "form-control",placeholder: "居住地" %>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group input-group-sm">
+          <%= f.text_field :vocation, class: "form-control",placeholder: "行业" %>
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <label class="radio-inline">
+            <%= f.radio_button(:gender, "mars") %> 男
+        </label>
+        <label class="radio-inline">
+            <%= f.radio_button(:gender, "venus") %> 女
+        </label>
+      </div>
+      <div class="col-lg-1">
+        <%= f.submit "确定" %>
+      </div>
+    <% end %>
+  </div>
+</div>

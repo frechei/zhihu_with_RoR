@@ -3,38 +3,15 @@
 @import "font-awesome";
 @import "simditor";
 @import "jquery-ui";
+@import "questions";
 @import "answers";
 @import "users";
 @import "sessions";
 @import "password_resets";
 
-.page-header {
-  position: relative;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  margin-left: 0px;
-  border-bottom: 1px solid #DADADA;
-  &:first-child {
-    margin: 10px;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    max-width: 55%;
-  }
-}
 
-#head2 {
-  border-bottom: 1px solid #DADADA;
-  margin: 10px;
-}
-ul.actions {
-  @extend .list-unstyled;
-  @extend .list-inline;
-  position: absolute;
-  bottom: -2px;
-  right: 2px;
-  max-width: 45%;
-  text-align: right;
-}
+
+
 body {
   padding-top: 70px;
 }
@@ -61,20 +38,8 @@ form {
   position: relative;
 }
 
-#all_answers {
-  padding-left: 0px;
-  margin: 10px;
-  .every_answer {
-    padding: 10px;
 
-    border-bottom: 1px solid #DADADA;
-    list-style-type: none;
-  }
-}
 
-.fa {
-  margin:0 11px 0 15px;
-}
 
 .navbar a {
   color: slategrey;

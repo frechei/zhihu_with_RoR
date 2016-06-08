@@ -1,0 +1,94 @@
+
+$("#location_form .nifty_form").on("ajax:success",function(e, data, status, xhr){
+  var html = "<%= escape_javascript(render(partial: "location", locals: {user: @user})) %>";
+  $('#location').replaceWith(html);
+  $('#location_form').hide();
+  addLocationEvent();
+});	
+
+$("#working_form .nifty_form").on("ajax:success",function(e, data, status, xhr){
+  var html = "<%= escape_javascript(render(partial: "working", locals: {user: @user})) %>";
+  $('#working').replaceWith(html);
+  $('#working_form').hide();
+  addWorkingEvent();
+}); 
+
+$("#education_form .nifty_form").on("ajax:success",function(e, data, status, xhr){
+  var html = "<%= escape_javascript(render(partial: "education", locals: {user: @user})) %>";
+  $('#education').replaceWith(html);
+  $('#education_form').hide();
+  addEducationEvent();
+}); 
+
+$("#statements_form .nifty_form").on("ajax:success",function(e, data, status, xhr){
+  var html = "<%= escape_javascript(render(partial: "statements", locals: {user: @user})) %>";
+  $('#statements').replaceWith(html);
+  $('#statements_form').hide();
+  addStatementEvent();
+}); 
+
+
+function addLocationEvent() {
+  $('#location a.zg-link-litblue-normal').click(function() {
+  	var $this = $(this);
+  	var $info = $this.parents('.info');
+  	$info.children('#location').hide();
+  	$info.children('#location_form').css('display', 'inline-block');
+  });
+  $('#edit-location').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.info');
+    $info.children('#location').hide()
+    $info.children('#location_form').css('display', 'inline-block')
+                          .children('.row').show() 
+  });
+};
+
+function addWorkingEvent() {
+  $('#working a.zg-link-litblue-normal').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.info');
+    $info.children('#working').hide();
+    $info.children('#working_form').css('display', 'inline-block');
+  });
+  $('#edit-working').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.info');
+    $info.children('#working').hide()
+    $info.children('#working_form').css('display', 'inline-block')
+                          .children('.row').show() 
+  });
+};
+
+function addEducationEvent() {
+  $('#education a.zg-link-litblue-normal').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.info');
+    $info.children('#education').hide();
+    $info.children('#education_form').css('display', 'inline-block');
+  });
+  $('#edit-education').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.info');
+    $info.children('#education').hide()
+    $info.children('#education_form').css('display', 'inline-block')
+                          .children('.row').show() 
+  });
+
+};
+
+function addStatementEvent() {
+  $('#statements a.zg-link-litblue-normal').click(function() {
+    var $this = $(this);
+    var $info = $this.parents('.statement');
+    $info.children('#statements').hide();
+    $info.children('#statements_form').css('display', 'inline-block');
+  });
+  $('#edit-statements').click(function(){
+    var $this = $(this);
+    var $info = $this.parents('.statement');
+    $info.children('#statements').hide();
+    $info.children('#statements_form').css('display', 'inline-block')
+                        .children('.row').show();
+  });
+};

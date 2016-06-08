@@ -12,8 +12,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= yield :panel_info %>
 </head>
-<body>
+
+<body class="<%= controller_name %> <%= action_name %>">
 <%= render 'shared/nav' %>
 <div class="container">
   <% flash.each do |key, message| %>
@@ -25,3 +28,6 @@
 </div>
 </body>
 </html>
+
+
+<new_link></new_link>

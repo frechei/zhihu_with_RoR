@@ -1,0 +1,20 @@
+<div id="education">
+	<% if user.education == nil || user.education.gsub(/\s+/,'') == ""  && (user.major == nil || user.major.gsub(/\s+/,'') == "") %>
+		<span class="info-empty-wrap"><a href="javascript:;" name="edit" 
+			class="zg-link-litblue-normal education-link">填写教育信息</a></span>
+	<% else %>
+		<% if user.education == nil || user.education.gsub(/\s+/,'') == ""  && user.major != nil %>
+			<span class="info-empty-wrap"><a href="javascript:;" name="edit" 
+			class="zg-link-litblue-normal education-link">填写学校信息</a></span>
+		<% else %>
+			<span class="education item"><%= user.education %></span>
+		<% end %>
+		<% if user.major == nil || user.major.gsub(/\s+/,'') == "" && user.education != nil %>
+			<span class="education item"><a href="javascript:;" 
+				class="zg-link-litblue-normal education-link" name="edit">填写专业</a></span>
+		<% else %>
+		 	<span class="education item"><%= user.major %></span>
+		<% end %>	
+		<button type="button" class="btn btn-default btn-xs" id="edit-education"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>修改</button>		
+	<% end %>
+</div>

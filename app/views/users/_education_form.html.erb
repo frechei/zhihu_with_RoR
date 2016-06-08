@@ -1,0 +1,20 @@
+<div id="education_form">
+  <div class="row">
+    <%= form_for @user, remote: true, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+      <div class="col-lg-3">
+        <div class="input-group input-group-sm">
+          <%= f.text_field :education, class: "form-control", placeholder: "学校或教育机构" %>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="input-group input-group-sm">
+          <%= f.text_field :major, class: "form-control", placeholder: "专业方向" %>
+        </div>
+      </div>
+    
+      <div class="col-lg-1">
+        <%= f.submit "确定" %>
+      </div>
+    <% end %>
+  </div>
+</div>

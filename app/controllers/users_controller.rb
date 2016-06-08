@@ -31,9 +31,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      flash[:success] = "修改成功"
       log_in(@user)
-      redirect_to @user
+      respond_to do |format|
+        format.html { redirect_to @user }
+        format.js
+      end
     else
       render 'edit'
     end
@@ -62,7 +64,9 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation, :avatar)
+                                   :password_confirmation, :avatar, 
+                                   :location, :vocation, :gender, :company, :position,
+                                   :education, :major, :statements)
     end
 
     def logged_in_user

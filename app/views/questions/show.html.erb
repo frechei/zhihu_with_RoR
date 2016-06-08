@@ -1,15 +1,14 @@
 <% title(@question.issue) %>
 
 <div class="row" id="admin">
-  <div class="col-md-9">
+  <div class="col-md-7">
     <div class="page-header" id="head1">
     <header>
       <h3 id="issue"><%= @question.issue %></h3>
       <ul class="actions">
         <li>
-          <%= link_to fa_icon("pencil") + " 修改问题", edit_question_path(@question), class: "btn btn-default" %>
+          <%= link_to fa_icon("pencil") + " 修改问题", edit_question_path(@question), class: "btn btn-default btn-xs" %>
         </li>
-        <li>
       </ul>
     </header>
       <header>
@@ -36,7 +35,7 @@
 
 
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <%= link_to "关注问题", "#", class: "btn btn-primary" %>
 
   </div>

@@ -1,0 +1,20 @@
+<div id="working">
+	<% if user.company == nil || user.company.gsub(/\s+/,'') == ""  && (user.position == nil || user.position.gsub(/\s+/,'') == "") %>
+		<span class="info-empty-wrap"><a href="javascript:;" name="edit" 
+			class="zg-link-litblue-normal working-link">填写工作信息</a></span>
+	<% else %>
+		<% if user.company == nil || user.company.gsub(/\s+/,'') == "" && user.position != nil %>
+			<span class="info-empty-wrap"><a href="javascript:;" name="edit" 
+				class="zg-link-litblue-normal working-link">填写公司信息</a></span>
+		<% else %>
+			 <span class="working item"><%= user.company %></span>
+		<% end %>
+		<% if user.position == nil || user.position.gsub(/\s+/,'') == "" && user.company != nil %>
+			<span class="business item"><a href="javascript:;" 
+				class="zg-link-litblue-normal working-link" name="edit">填写职位</a></span>
+		<% else %>
+		 	<span class="working item"><%= user.position %></span>
+		<% end %>
+		<button type="button" class="btn btn-default btn-xs" id="edit-working"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>修改</button>		
+	<% end %>
+</div>
