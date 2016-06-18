@@ -5,7 +5,7 @@
 
 	<% @topic.questions.each do |question| %>
 		<h4><%= link_to question.issue, question_path(question) %></h4>
-		<% top_answer = question.answers.by_votes.first %>
+		<% top_answer = question.answers.by_votes.limit('1') %>
 		<% @answer_comment = top_answer.comments.build %>
 		<div class="answer-vote-bar">
 		  <%= link_to fa_icon("caret-up") + top_answer.votes.to_s, vote_answer_path(top_answer, value: 1), method: "post", class: "btn btn-default" %>
