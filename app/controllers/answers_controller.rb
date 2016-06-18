@@ -1,16 +1,39 @@
 class AnswersController < ApplicationController
-  before_action :set_question
+  before_action :set_question, only: [:create]
+  before_action :logged_in_user, only: [:create]
 
   def create
     @answer = @question.answers.build(answer_params)
-
+    @answer.replier_id = current_user.id
+    
     if @answer.save
+      @answer.create_activity :create, owner: current_user
       flash[:notice] = "回答成功"
       redirect_to @question
     else
       flash.now[:alert] = "回答失败"
       render 'questions/show'
     end
+  end
+
+  def vote
+    if AnswerVote.exists?(answer_id: params[:id], user_id: current_user.id)
+      vote =  current_user.answer_votes.where(answer_id: params[:id]).first
+      vote.value = params[:value].to_i
+    else
+      vote = current_user.answer_votes.build(answer_id: params[:id], value: params[:value].to_i)
+    end
+
+    if vote.save!
+      vote.create_activity :vote, owner: current_user
+      redirect_to :back
+    else
+      redirect_to :back, alert: "投票失败，可能之前已投过"
+    end
+  end
+
+  def show
+    
   end
 
   private
@@ -20,5 +43,11 @@ class AnswersController < ApplicationController
 
     def answer_params
       params.require(:answer).permit(:content)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        redirect_to login_url, notice: "请先登陆"
+      end
     end
 end

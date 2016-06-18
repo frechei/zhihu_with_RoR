@@ -1,0 +1,6 @@
+<li class="list-group-item">
+<%= simple_form_for [ques_or_ans, comment], remote: true do |f| %>
+	<%= f.input :text, label: false %>
+	<%= f.submit class: "btn btn-primary btn-xs", value: '评论' %>
+<% end %>
+</li>

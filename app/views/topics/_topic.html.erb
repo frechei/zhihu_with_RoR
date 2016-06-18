@@ -1,0 +1,4 @@
+<div class="topic-tag">
+	<%= link_to "<span></span>".html_safe, remove_question_topic_path(question, topic), method: :delete, remote: true, class: "remove", title: "删掉" %>
+	<%= link_to topic.name, topic_path(topic) %>
+</div>

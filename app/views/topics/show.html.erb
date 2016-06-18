@@ -1,0 +1,25 @@
+<% provide(:title, @topic.name + "-话题-知乎") %>
+<div class="row">
+  <div class="col-md-9">
+		<h2 class="topic-header"><%= @topic.name %></h2>
+		<div class="topic-question-order">
+			<a href="#">热门问题</a> | <a href="#">全部问题</a>
+		</div>
+		<div class="topic-question-list">
+			<% @topic.questions.each do |question| %>
+				<h4><%= link_to question.issue, question_path(question) %></h4>
+				<div class="topic-question-item">
+					<%= link_to question.answers.count.to_s + "个回答", question_path(question) %>
+					 • <%= question.qs_followers.count %>个关注
+					 • <%= render 'questions/follow_question_form', question: question %>
+				</div>
+			<% end %>
+		</div>
+  </div>   
+
+  <div class="col-md-3">
+    <%= render 'follow_topic_form', topic: @topic %>
+  </div>
+</div>
+
+

@@ -1,21 +1,22 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update]
-  def index
-    
-  end
-
+  before_action :logged_in_user, only: [:edit, :update, :create]
+  
   def new
     @question = Question.new
   end
 
   def show
     @answer = @question.answers.build
+    @question_comment = @question.comments.build
+    @question_comments = @question.comments.all
   end
 
   def create
     @question = Question.new(question_params)
-
+    @question.questioner_id = current_user.id
     if @question.save
+      @question.create_activity :create, owner: current_user
       flash[:notice] = "问题已发布"
       redirect_to question_path(@question)
     else
@@ -48,6 +49,12 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:issue, :description, :topic)
+      params.require(:question).permit(:issue, :description, :topic_names)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        redirect_to login_url, notice: "请先登陆"
+      end
     end
 end

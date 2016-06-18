@@ -1,0 +1,21 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div class="col-md-9">
+		<%= render 'personal_info', user: @user %>
+		<div class="panel panel-default">
+      <div class="panel-heading"><%= link_to @user.name, user_path(@user)%>关注的话题</div>
+      <div class="panel-body">
+        <% @topics.each do |topic| %>
+          <div class="user-topic">
+            <%= link_to topic.name, topic_path(topic)%>
+            <%= render 'topics/follow_topic_form', topic: topic %>
+          </div>
+        <% end %>
+      </div>
+    </div>   
+  </div>
+
+  <div class="col-md-3">
+    <%= render 'shared/stats' %>
+  </div>
+</div>

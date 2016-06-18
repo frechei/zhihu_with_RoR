@@ -13,7 +13,7 @@
 <%= simple_form_for(question) do |f| %>
   <%= f.input :issue,  label: '问题'%>
   <%= f.input :description, label: '问题说明（可选）：', input_html: { id: 'editor' } %>
-  <%= f.input :topic, label: '选择话题：' %>
+  <%= f.input :topic_names, label: '选择话题：' %>
 
   <%= f.button :submit, class: "btn-primary", value: '发布' %>
   <%=	link_to "返回", root_path, class: "btn btn-default ", id: "back1" %>

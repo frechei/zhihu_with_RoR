@@ -93,6 +93,61 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  # 跟问题的关联
+  has_many :questions
+  has_many :answers
+
+  has_many :answer_votes
+  # 答案里有多少个赞
+  def total_votes
+    AnswerVote.joins(:answer).where(user_id: self.id).where(value: 1).sum('value')
+  end
+
+  # 跟评论的关联
+  has_many :comments
+
+  ####################################################################
+  # 关注问题
+  has_many :follow_questions, class_name: "FollowQuestion",
+    foreign_key: "qs_follower_id", dependent: :destroy
+  has_many :followed_qs, through: :follow_questions
+
+  # 关注一个问题
+  def follow_a_question(question)
+    follow_questions.create(followed_qs_id: question.id)
+  end
+
+  # 取消关注一个问题
+  def unfollow_a_question(question) 
+    follow_questions.find_by(followed_qs_id: question.id).destroy
+  end
+
+  # 如果当前用户关注了指定的问题，返回true
+  def following_a_question?(question)
+    followed_qs.include?(question)
+  end
+
+  ####################################################################
+  # 关注话题
+  has_many :follow_topics, class_name: "FollowTopic",
+    foreign_key: "tp_follower_id", dependent: :destroy
+  has_many :followed_tp, through: :follow_topics
+
+  # 关注一个话题
+  def follow_a_topic(topic)
+    follow_topics.create(followed_tp_id: topic.id)
+  end
+
+  # 取消关注一个话题
+  def unfollow_a_topic(topic)
+    follow_topics.find_by(followed_tp_id: topic.id).destroy
+  end
+
+  # 如果当前用户关注指定话题，返回true
+  def following_a_topic?(topic)
+    followed_tp.include?(topic)
+  end
+
   private
     def create_activation_digest
       self.activation_token = User.new_token

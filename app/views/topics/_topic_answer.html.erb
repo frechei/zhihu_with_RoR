@@ -1,0 +1,42 @@
+<div class="topic-question-list top-answer-list">
+	<div class="topic-answer-header">
+		<h4><%= @topic.name %></h4>
+	</div>
+
+	<% @topic.questions.each do |question| %>
+		<h4><%= link_to question.issue, question_path(question) %></h4>
+		<% top_answer = question.answers.by_votes.first %>
+		<% @answer_comment = top_answer.comments.build %>
+		<div class="answer-vote-bar">
+		  <%= link_to fa_icon("caret-up") + top_answer.votes.to_s, vote_answer_path(top_answer, value: 1), method: "post", class: "btn btn-default" %>
+		  <%= link_to fa_icon("caret-down"), vote_answer_path(top_answer, value: -1), method: "post", class: "btn btn-default answer-vote-down" %>
+		</div>
+		<h5><%= top_answer.replier.name %></h5>
+		<%= sanitize(top_answer.content) %>
+		<div class="state">
+      <a href="<%= question_answer_path(top_answer.question, top_answer) %>"><%= top_answer.updated_at.strftime("发布于%Y-%m-%d")  %></a>
+      <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 添加评论</a>
+      <a href="#"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i> 感谢</a>
+      <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i> 分享</a>
+      <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"> 收藏</i></a>
+      <a href="#">• 没有帮助</i></a> 
+      <a href="#">• 举报</i></a> 
+      <a href="#">• 作者保留权利</i></a>
+    </div>
+    <ul class="list-group">
+      <% top_answer.comments.all.each do |answer_comment| %>
+        <%= render partial: 'comments/panel', locals: { comment: answer_comment }  %>
+      <% end %>   
+      <%= render 'comments/form', ques_or_ans: top_answer, comment: @answer_comment  %>
+    </ul> 
+	<% end %>
+</div>
+
+<script type="text/javascript">
+	(function($) {
+		$('a.add_comment').click(function(e){
+			e.preventDefault();
+			$(this).parent(".state").next("ul.list-group").toggle()
+		})
+	})(jQuery);
+</script>

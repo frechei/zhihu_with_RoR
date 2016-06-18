@@ -1,0 +1,6 @@
+<div class="activity-owner">提出了一个问题</div>
+<% if activity.trackable %>
+	<div class="activity-link"><%= link_to activity.trackable.issue, question_path(activity.trackable) %></div>      
+<% else %>
+	--话题已删除--
+<% end %>

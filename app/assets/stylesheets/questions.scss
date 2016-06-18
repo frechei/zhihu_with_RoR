@@ -9,10 +9,15 @@
   margin-left: 0px;
   border-bottom: 1px solid #DADADA;
   &:first-child {
-    margin: 10px 30px 0 10px;
+    margin: 10px 25px 0 10px;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h4, h5, h6 {
     max-width: 55%;
+    display: inline-block;
+  }
+
+  h3 {
+    max-width: 80%;
     display: inline-block;
   }
 }
@@ -23,7 +28,7 @@ div.col-md-7 {
 
 #head2 {
   border-bottom: 1px solid #DADADA;
-  margin: 10px 30px 0 10px;
+  margin: 10px 25px 0 10px;
 }
 ul.actions {
   @extend .list-unstyled;
@@ -40,11 +45,74 @@ ul.actions {
 
 #all_answers {
   padding-left: 0px;
-  margin: 10px;
+  margin: 10px 25px 20px 10px;
+  h5 {
+  	font-weight: bold;
+  }
   .every_answer {
-    padding: 10px;
-
     border-bottom: 1px solid #DADADA;
     list-style-type: none;
+    
+  } 
+}
+
+ul.list-group {
+  display: none;
+  div.comment_body {
+    overflow: hidden;
+    font-size: 0.9em;
+  }
+  div.form-group {
+    margin-bottom: 5px;
+  }
+  input.btn {
+    margin-bottom: 5px;
+  }
+  img {
+    float: left;
+    margin: 5px 10px 5px 5px;
   }
 }
+
+.state {
+  margin-bottom: 5px;
+  a {
+    margin-right: 10px;
+    font-size: 0.9em;
+    color: #999;
+    i {
+      font-size: 1em;
+      vertical-align: 0;
+      margin-right: 2px;
+    }
+  }
+}
+
+div.comment_body {
+  a {
+    color: #259;
+  }
+}
+
+.topic-state {
+  @extend .label;
+  font-size: 12px;
+  padding: 0.3em 0.6em;
+}
+
+.topic-tag {
+  
+  @extend .topic-state;
+  @extend .label-info;
+  margin-right: 10px;
+    a {
+    color: white;
+    &.remove {
+    font-family: "FontAwesome";
+    @extend .fa-close;
+    margin-right: 0.5em;
+    text-decoration: none;
+    }
+  }
+}
+

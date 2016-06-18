@@ -1,0 +1,5 @@
+$("li.list-group-item form").on("ajax:success",function(e, data, status, xhr){
+  var html = "<%= escape_javascript(render(partial: "comments/panel", locals: {comment: @comment})) %>";
+  $(this).parent("li").before(html)
+  $(this).find("textarea").val("")
+});	

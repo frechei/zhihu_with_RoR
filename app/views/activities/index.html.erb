@@ -1,0 +1,24 @@
+<div class="row" id="admin">
+  <div class="col-md-7">
+    <h4 class="home-header">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>最新动态
+    </h4>
+    <% @activities.each do |activity| %>
+      <div class="activity-owner-img">
+        <% if activity.owner.avatar_url(:normal) != nil %>
+          <%= image_tag(activity.owner.avatar_url(:normal), size: "48") %>
+        <% else %>
+          <%= letter_avatar_tag(activity.owner.username_for_avatar, 48, class: 'av') %>
+        <% end %>
+        
+      </div>
+    	<div class="activities">
+	    	<%= link_to activity.owner.name, activity.owner, class: "activity-owner" if activity.owner %>
+	    	<%= render_activity activity %>
+    	</div>
+    <% end %>
+  </div>
+
+  <div class="col-md-2">
+  </div>
+</div>

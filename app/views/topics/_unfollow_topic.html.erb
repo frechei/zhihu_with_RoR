@@ -1,0 +1,3 @@
+<%= form_for(current_user.follow_topics.find_by(followed_tp_id: topic.id), html: {method: :delete}, remote: true) do |f| %>
+  <%= f.submit "取消关注", class: "btn btn-default" %>
+<% end %>

@@ -74,10 +74,10 @@
               <div class="agree-thanks">
                 <span class="zm-profile-header-info-title">获得</span>
                 <span class="zm-profile-header-user-agree">
-                  <%= fa_icon("heart-o") %><strong>0</strong>赞同
+                  <%= fa_icon("thumbs-o-up") %><strong><%= @user.total_votes%></strong>赞同
                 </span>
                 <span class="zm-profile-header-user-thanks">
-                  <%= fa_icon("thumbs-o-up") %><strong>0</strong>感谢
+                  <%= fa_icon("heart-o") %><strong>0</strong>感谢
                 </span>
                 <% if current_user?(@user) %>
                   <%= link_to '完善我的资料', edit_user_path, class: "btn btn-success btn-xs" %>
@@ -97,7 +97,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">最新动态</div>
       <div class="panel-body">
-        Panel content
+        <%= render 'activities',  activities: @activities %>
       </div>
     </div>   
   </div>

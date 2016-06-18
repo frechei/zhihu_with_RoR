@@ -136,6 +136,10 @@ a {
       margin: 8px;
       height: 24px;
 
+      i {
+        margin-left: 10px;
+      }
+
       #location {
         display: inline;
       }
@@ -211,7 +215,7 @@ a {
 
       .fa {
         width: 14px;
-        margin: 0 11px 0 5px;
+        //margin: 0 11px 0 5px;
       }
 
       span {
@@ -260,6 +264,10 @@ a {
       span {
         margin: 5px;
         font-size: 15px;
+
+        i {
+          margin: 0 11px 0 5px;
+        }
       }
 
       a {
@@ -285,3 +293,27 @@ a {
   }
 }
 
+div.user-topic {
+  margin: 5px 0px 15px 0px;
+  padding: 5px 0px 20px 3px;
+  border-bottom: 1px solid #ECE7E7;
+
+  a {
+    font-size: 1.3em;
+  }
+  div#follow_topic_form {
+    display: inline-block;
+    float: right;
+  }
+  input.btn {
+    padding: 2px 10px 2px 10px;
+    margin: 8px;
+  }
+}
+
+div.following-topics{
+  border-bottom: 1px solid #eeeeee;
+  padding: 20px 0 20px 0;
+  font-size: 1.1em;
+  color: gray;
+}

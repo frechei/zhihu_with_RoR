@@ -1,0 +1,79 @@
+// Place all the styles related to the topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h2.topic-header {
+	border-bottom: 1px solid #DADADA;
+	margin-right: 50px;
+	padding: 5px 5px 10px 0px;
+}
+
+div.topic-question-list {
+	h4 a{
+		color: #259;
+	}
+
+	color: #999;
+	a { color: #999; }
+
+	border-top: 1px solid #DADADA;
+	padding: 5px 5px 10px 0px;
+	margin: 10px 50px 0 0;
+
+	div#follow_question_form{
+		display: inline-block;
+		input {
+			background-color: white;
+			border: 0px;
+			color: #999;
+			padding: 0;
+		}
+	}
+
+	div.topic-question-item {
+		border-bottom: 1px solid #F2EBEB;
+		padding: 5px 5px 10px 0px;
+		margin-right: -8px;
+	}
+}
+
+a {
+	color: #259;
+}
+
+div.topic-tag {
+	background: #eff6fa;
+	a {
+		color: #3A8B67;
+		font-size: 1.1em;
+		font-weight: 100;
+	}
+}
+
+div.top-answer-list {
+	color: #333333;
+	margin-right: 0;
+	padding-right: 0;
+	border-top: 1px solid #F1EBEB;
+
+	div.topic-answer-header {
+		h4 {
+			border-bottom: 1px solid #F1EBEB;
+			padding-bottom: 10px;
+		}
+	}
+
+	div.state {
+		border-bottom: 1px solid #DADADA;
+		padding-bottom: 5px;
+	}	
+}
+
+
+div.topics-platz {
+	margin-bottom: 20px;
+	padding: 50px;
+	border: 1px solid #cce1ef;
+	border-radius: 4px;
+	background: #eff6fA;
+	text-align: center;
+}

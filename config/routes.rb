@@ -1,13 +1,30 @@
 Rails.application.routes.draw do
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
-  root 'questions#index'
+  root 'activities#index'
 
   resources :questions do
+    resources :comments,  only: [:create]
     resources :answers
+    resources :topics, only: [] do
+      member do
+        delete :remove
+      end
+    end
   end
+
+  resources :answers, only: [] do
+    resources :comments
+    member do
+      post :vote
+    end
+  end
+
+  resources :topics, only: [:index, :show] 
+  
   post 'photos' => 'photos#upload'
 
   resources :users
@@ -20,13 +37,21 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :topics
     end
   end
+
 
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :relationships, only: [:create, :destroy]
+  resources :follow_questions, only: [:create, :destroy]
+  resources :follow_topics, only: [:create, :destroy]
+
+  #首页动态
+  resources :activities, only: [:index]
+
+  get 'topic' => 'topics#topic'
   # root                'static_pages#home'
   # get    'help'    => 'static_pages#help'
   # get    'about'   => 'static_pages#about'

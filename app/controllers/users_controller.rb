@@ -21,6 +21,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @activities = PublicActivity::Activity.order("created_at desc")
+        .where(owner_id: @user, owner_type: "User")
   end
 
   def edit
@@ -59,6 +61,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_form'
+  end
+
+  def topics
+    @user = User.find(params[:id])
+    @title = @user.name + "关注的话题"
+    @topics = @user.followed_tp.paginate(page: params[:page])
+    render 'show_topics'
   end
 
   private

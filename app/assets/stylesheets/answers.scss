@@ -4,4 +4,10 @@
 
 form#new_answer {
 	margin-left: 10px;
+	div.simditor-body {
+		min-height: 200px;
+	}
+	input {
+		margin-bottom: 30px;
+	}
 }

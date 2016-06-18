@@ -1,0 +1,18 @@
+<li class="list-group-item">
+	<% if comment.user.avatar_url(:normal) != nil %>
+	  <%= image_tag(comment.user.avatar_url(:normal), size: "40") %>
+	<% else %>
+	  <%= letter_avatar_tag(comment.user.username_for_avatar, 40, class: 'av') %>
+	<% end %>
+	<div class="comment_body">
+		<div class="comment_header">
+			<cite><%= link_to comment.user.name, user_path(comment.user) %></cite>
+		</div>
+		<div class="comment_content">
+			<%= simple_format(comment.text) %>
+		</div>
+		<div class="comment_footer">
+			<%= time_ago_in_words(comment.created_at) %>前
+		</div>	
+	</div>
+</li>

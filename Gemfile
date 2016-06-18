@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem "rails-i18n"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -44,6 +44,9 @@ gem 'bootstrap-will_paginate'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+
+# 首页显示动态流
+gem 'public_activity'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

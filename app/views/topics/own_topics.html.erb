@@ -1,0 +1,25 @@
+<div class="row" id="admin">
+  <div class="col-md-7">
+    <h4 class="home-header">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>已关注的话题动态
+    </h4>
+    <% @topics.each do |topic| %>
+			<div class="topic-tag">
+        <%= link_to topic.name, topic_path(topic), remote: true %>
+      </div>
+		<% end %>
+    
+		<div class="topic-order">
+			
+		</div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="topics-platz">
+      <%= link_to "进入话题广场", topics_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+
+

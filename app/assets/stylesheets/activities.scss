@@ -1,0 +1,49 @@
+// Place all the styles related to the activities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h4.home-header {
+	i { margin-right: 6px; }
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+}
+
+div.activity-owner-img {
+	float: left;
+	margin-top: 10px;
+}
+
+div.activities {
+	border-bottom: 1px solid #eee;
+	padding: 8px 0 8px 0;
+	margin: 0 0 3px 58px;
+
+	div.activity-author {
+		font-size: 1.09em;
+		a { color: #222; }
+		font-weight: bolder;
+		padding-bottom: 5px;
+	}
+
+	.activity-owner {
+		color: #999;
+		display: inline;
+		font-size: 1.15em;
+	}
+
+	.activity-link {
+		color: #259;
+		font-size: 1.2em;
+	}
+}
+
+div.home-vote {
+	margin-top: 60px;
+	a.link-home-vote {
+		padding: 0px 15px 0px 15px;
+	}
+}
+
+div.current-user-activities {
+  margin: 0 0 3px 50px;
+}

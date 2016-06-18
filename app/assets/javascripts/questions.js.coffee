@@ -17,4 +17,13 @@ $(".questions").ready ->
 
   });
 
+
+$(".questions").ready ->
+  $("a.add_comment").click (e)->
+    e.preventDefault()
+    $(this).parent(".state").next("ul.list-group").toggle()
+
  
+$(".questions").ready ->
+  $(".topic .remove").on "ajax:success", ->
+    $(this).parent().fadeOut()

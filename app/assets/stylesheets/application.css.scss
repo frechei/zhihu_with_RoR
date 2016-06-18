@@ -8,7 +8,8 @@
 @import "users";
 @import "sessions";
 @import "password_resets";
-
+@import "topics";
+@import "activities";
 
 
 
@@ -18,6 +19,7 @@ body {
 nav {
   font-size: large;
   background-color: darkseagreen;
+  height: 52px;
 }
 .navbar-brand {
   font-size: xx-large;
@@ -38,9 +40,25 @@ form {
   position: relative;
 }
 
-
-
-
 .navbar a {
   color: slategrey;
+}
+
+div.answer-vote-bar {
+  float: left;
+  margin-left: -52px;
+  .fa {font-size: 1.3em;}
+  a {
+    display: block;
+    background-color: #CCE0FD;
+    padding: 3px 15px 3px 15px;
+
+    .fa {
+      display: block;
+    }
+  }
+  .answer-vote-down {
+    margin-top: 3px;
+    padding: 3px;
+  }
 }
