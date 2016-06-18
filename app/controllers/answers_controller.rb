@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_question, only: [:create]
+  before_action :set_question, only: [:create, :show]
   before_action :logged_in_user, only: [:create]
 
   def create
@@ -14,6 +14,11 @@ class AnswersController < ApplicationController
       flash.now[:alert] = "回答失败"
       render 'questions/show'
     end
+  end
+
+  def show
+    @answer = Answer.find(params[:id])
+    @topics = @question.topics
   end
 
   def vote
@@ -32,9 +37,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  def show
-    
-  end
 
   private
     def set_question
