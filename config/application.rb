@@ -24,5 +24,6 @@ module ZhihuWithRor
     config.active_record.raise_in_transactional_callbacks = true
     # 在处理 Ajax 的表单中添加真伪令牌
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.serve_static_assets = true
   end
 end
