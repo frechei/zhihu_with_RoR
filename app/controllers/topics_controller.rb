@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+	before_action :logged_in_user, only: [:topic]
+
 	def remove
 		@question = Question.find(params[:question_id])
 		@topic = Topic.find(params[:id])
@@ -23,4 +25,12 @@ class TopicsController < ApplicationController
 		@topics = current_user.followed_tp
 		render 'own_topics'
 	end
+
+	private
+
+	 	def logged_in_user
+      unless logged_in?
+        redirect_to login_url, notice: "请先登陆"
+      end
+    end
 end
