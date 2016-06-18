@@ -10,9 +10,9 @@ class Answer < ActiveRecord::Base
 
   has_many :answer_votes
 
-  def self.by_votes
-  	select('answers.*,coalesce(value, 0) as votes').
+  def self.by_votes	
   	joins('left join answer_votes on answer_votes.answer_id=answers.id').
+    select('answers.*,coalesce(value, 0) as votes').
   	order('votes desc').
     group('answer_id')
   end
