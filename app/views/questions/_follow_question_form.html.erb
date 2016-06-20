@@ -1,7 +1,9 @@
 <div id="follow_question_form">
-  <% if current_user.following_a_question?(question) %>
-    <%= render "questions/unfollow_question", question: question %>
-  <% else %>
-    <%= render "questions/follow_question", question: question %>
-  <% end %>
+	<% if logged_in? %>
+	  <% if current_user.following_a_question?(question) %>
+	    <%= render "questions/unfollow_question", question: question %>
+	  <% else %>
+	    <%= render "questions/follow_question", question: question %>
+	  <% end %>
+	<% end %>
 </div>

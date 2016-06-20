@@ -1,8 +1,10 @@
 <li>
   <%= render partial: "avatar", locals: {user: user} %>
   <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "删除用户", user, method: :delete,
-                  data: { confirm: "确定删除？" } %>
-  <% end %>
+  <% if logged_in? %>
+	  <% if current_user.admin? && !current_user?(user) %>
+	    | <%= link_to "删除用户", user, method: :delete,
+	                  data: { confirm: "确定删除？" } %>
+	  <% end %>
+	<% end %>
 </li>

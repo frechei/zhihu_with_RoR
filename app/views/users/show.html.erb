@@ -8,9 +8,11 @@
         <header>
           <h1><%= @user.name %></h1>
           <h5>
-          <% if current_user.admin?%>
-            <%= link_to "删除用户", @user, remote: true, method: :delete,
-                          data: { confirm: "确定？" } %>
+          <% if logged_in? %>
+            <% if current_user.admin?%>
+              <%= link_to "删除用户", @user, remote: true, method: :delete,
+                            data: { confirm: "确定？" } %>
+            <% end %>
           <% end %>
           </h5>
           <div class="item"> 

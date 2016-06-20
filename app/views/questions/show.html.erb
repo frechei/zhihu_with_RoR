@@ -23,7 +23,13 @@
       </header>
       <div class="state">
         <a href="<%= question_path(@question) %>"><%= @question.updated_at.strftime("发布于%Y-%m-%d")  %></a>
-        <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 添加评论</a>
+        <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 
+          <% if @question.comments.count > 0 %>
+            <%= @question.comments.count %>个评论 
+          <% else %>
+            添加评论
+          <% end %>
+        </a>
         <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i> 分享</a>
         <a href="#">• 邀请回答</i></a> 
       </div>
@@ -48,13 +54,19 @@
           <%= link_to fa_icon("caret-up") + @question.answers[i].votes.to_s, vote_answer_path(@question.answers[i], value: 1), method: "post", class: "btn btn-default" %>
           <%= link_to fa_icon("caret-down"), vote_answer_path(@question.answers[i], value: -1), method: "post", class: "btn btn-default answer-vote-down" %>
         </div>
-        <h5><%= @question.answers[i].replier.name %></h5>
+        <h5><%= link_to @question.answers[i].replier.name, user_path(@question.answers[i].replier) %></h5>
         <li class="every_answer">
           
           <%= sanitize(@question.answers[i].content) %>
           <div class="state">
             <a href="<%= question_answer_path(@question, @question.answers[i]) %>"><%= @question.answers[i].updated_at.strftime("发布于%Y-%m-%d")  %></a>
-            <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 添加评论</a>
+            <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 
+              <% if @question.answers[i].comments.count > 0 %>
+                <%= @question.answers[i].comments.count %>个评论 
+              <% else %>
+                添加评论
+              <% end %>
+            </a>
             <a href="#"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i> 感谢</a>
             <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i> 分享</a>
             <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"> 收藏</i></a>

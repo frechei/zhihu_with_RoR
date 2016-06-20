@@ -16,11 +16,17 @@
 		  <%= link_to fa_icon("caret-up") + @answer.votes.to_s, vote_answer_path(@answer, value: 1), method: "post", class: "btn btn-default" %>
 		  <%= link_to fa_icon("caret-down"), vote_answer_path(@answer, value: -1), method: "post", class: "btn btn-default answer-vote-down" %>
 		</div>
-		<h5><%= @answer.replier.name %></h5>
+		<h5><%= link_to @answer.replier.name, @answer.replier %></h5>
 		<%= sanitize(@answer.content) %>
 		<div class="state">
       <a href="<%= question_answer_path(@question, @answer) %>"><%= @answer.updated_at.strftime("发布于%Y-%m-%d")  %></a>
-      <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 添加评论</a>
+      <a href="#" class="add_comment"><i class="fa fa-comment-o fa-lg" aria-hidden="true"></i> 
+      	<% if @answer.comments.count > 0 %>
+          <%= @answer.comments.count %>个评论 
+        <% else %>
+          添加评论
+        <% end %>
+      </a>
       <a href="#"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i> 感谢</a>
       <a href="#"><i class="fa fa-share-square-o" aria-hidden="true"></i> 分享</a>
       <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"> 收藏</i></a>
