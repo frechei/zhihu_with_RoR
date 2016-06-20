@@ -1,5 +1,5 @@
 ###山寨zhihu
-
+部署到heroku的展示：[https://zhihucat.herokuapp.com](https://zhihucat.herokuapp.com)
 ------
 
 为找工作而做仿写的知乎，大致框架ok。
