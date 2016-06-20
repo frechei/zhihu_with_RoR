@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   #首页动态
   resources :activities, only: [:index]
 
+  get 'explore' => 'activities#explore'
   get 'topic' => 'topics#topic'
   # root                'static_pages#home'
   # get    'help'    => 'static_pages#help'

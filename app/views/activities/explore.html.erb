@@ -1,0 +1,19 @@
+
+<% provide(:title,  "发现-知乎") %>
+<div class="row">
+  <div class="col-md-7">
+		<div class="home-header">
+			<h4><i class="fa fa-file-text-o" aria-hidden="true"></i> 发现问题</h4>
+		</div>
+		<div class="topic-question-list">
+			<% @explore_questions.each do |question| %>
+				<h4><%= link_to question.issue, question_path(question) %></h4>
+				<div class="topic-question-item">
+					<%= link_to question.answers.count.to_s + "个回答", question_path(question) %>
+					 • <%= question.qs_followers.count %>个关注
+					 • <%= render 'questions/follow_question_form', question: question %>
+				</div>
+			<% end %>
+		</div>
+  </div>   
+</div>

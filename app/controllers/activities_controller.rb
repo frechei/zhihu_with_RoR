@@ -6,6 +6,11 @@ class ActivitiesController < ApplicationController
   				.where(owner_id: current_user.following, owner_type: "User")
   end
 
+  def explore
+    @explore_questions = Question.order(created_at: :desc).limit('20')
+    render 'explore'
+  end
+
   private
   	def logged_in_user
       unless logged_in?
