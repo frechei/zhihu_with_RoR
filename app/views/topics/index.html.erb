@@ -3,12 +3,13 @@
     <h4 class="home-header">
       <i class="fa fa-th-large" aria-hidden="true"></i>话题广场
     </h4>
-    <% @topics.each do |topic| %>
-			<div class="topic-tag">
-        <%= link_to topic.name, topic_path(topic) %>
-      </div>
-		<% end %>
-    
+      <ul>
+        <% @topics.each do |topic| %>
+    			<li class="topic-tag topics-tag">
+            <%= link_to topic.name, topic_path(topic) %>
+          </li>
+    		<% end %>
+      </ul>
 		<div class="topic-order">
 			
 		</div>

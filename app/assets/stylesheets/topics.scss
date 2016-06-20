@@ -40,11 +40,13 @@ a {
 	color: #259;
 }
 
-div.topic-tag {
+li.topics-tag {
 	background: #eff6fa;
+	margin: 0 10px 10px 0;
+	float: left;
 	a {
 		color: #3A8B67;
-		font-size: 1.1em;
+		font-size: 1.2em;
 		font-weight: 100;
 	}
 }
