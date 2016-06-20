@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.send_activation_email
-      flash[:info] = "请到邮箱激活帐号"
+      # 由于没有信用卡，heroku的mailgun先不能用
+      # @user.send_activation_email
+      # flash[:info] = "请到邮箱激活帐号"
       redirect_to root_url
     else
       render 'new'
