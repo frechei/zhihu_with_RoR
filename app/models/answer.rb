@@ -11,10 +11,13 @@ class Answer < ActiveRecord::Base
   has_many :answer_votes
 
   def self.by_votes	
-    select('answers.*,coalesce(value, 0) as votes').
-  	joins('left join answer_votes on answer_votes.answer_id=answers.id').
-  	order('votes desc')
-    # .group('answer_id')
+    #  select('answers.*,coalesce(value, 0) as votes').
+  	# joins('left join answer_votes on answer_votes.answer_id=answers.id').
+  	# order('votes desc')
+    #  # .group('answer_id')
+    # postgresql GROUP BY clause or be used in an aggregate function 的错误
+    find_by_sql('SELECT answers.*, coalesce(value, 0) AS votes FROM "answers" LEFT JOIN answer_votes 
+      ON answer_votes.answer_id=answers.id GROUP BY answers.id ORDER BY votes DESC LIMIT 3 OFFSET 0')
   end
 
   def votes
