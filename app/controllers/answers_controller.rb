@@ -22,6 +22,7 @@ class AnswersController < ApplicationController
   end
 
   def vote
+    @answer = Answer.find(params[:id])
     if AnswerVote.exists?(answer_id: params[:id], user_id: current_user.id)
       vote =  current_user.answer_votes.where(answer_id: params[:id]).first
       vote.value = params[:value].to_i
@@ -31,7 +32,10 @@ class AnswersController < ApplicationController
 
     if vote.save!
       vote.create_activity :vote, owner: current_user
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     else
       redirect_to :back, alert: "投票失败，可能之前已投过"
     end

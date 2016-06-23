@@ -51,9 +51,10 @@
         <% for i in 0..(@question.answers.count-1) do %>
         <% @answer_comment = @question.answers[i].comments.build %>
         <div class="answer-vote-bar">
-          <%= link_to fa_icon("caret-up") + @question.answers[i].votes.to_s, vote_answer_path(@question.answers[i], value: 1), method: "post", class: "btn btn-default" %>
-          <%= link_to fa_icon("caret-down"), vote_answer_path(@question.answers[i], value: -1), method: "post", class: "btn btn-default answer-vote-down" %>
+          <%= link_to fa_icon("caret-up") + @question.answers[i].votes.to_s, vote_answer_path(@question.answers[i], value: 1), method: "post", class: "btn btn-default", remote: true %>
+          <%= link_to fa_icon("caret-down"), vote_answer_path(@question.answers[i], value: -1), method: "post", class: "btn btn-default answer-vote-down", remote: true %>
         </div>
+        <%= render partial: 'answers/vote_bar', locals: { answer:  @question.answers[i] } %>
         <h5><%= link_to @question.answers[i].replier.name, user_path(@question.answers[i].replier) %></h5>
         <li class="every_answer">
           

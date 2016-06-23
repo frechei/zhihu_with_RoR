@@ -12,10 +12,8 @@
 		</div>
 		<h4><%= link_to @question.issue, question_path(@question) %></h4>
 		<% @answer_comment = @answer.comments.build %>
-		<div class="answer-vote-bar">
-		  <%= link_to fa_icon("caret-up") + @answer.votes.to_s, vote_answer_path(@answer, value: 1), method: "post", class: "btn btn-default" %>
-		  <%= link_to fa_icon("caret-down"), vote_answer_path(@answer, value: -1), method: "post", class: "btn btn-default answer-vote-down" %>
-		</div>
+		<%= render partial: 'answers/vote_bar', locals: { answer:  @answer } %>
+
 		<h5><%= link_to @answer.replier.name, @answer.replier %></h5>
 		<%= sanitize(@answer.content) %>
 		<div class="state">

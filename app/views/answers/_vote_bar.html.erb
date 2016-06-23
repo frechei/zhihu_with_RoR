@@ -1,0 +1,4 @@
+<div class="answer-vote-bar">
+  <%= link_to fa_icon("caret-up") + answer.votes.to_s, vote_answer_path(answer, value: 1), method: "post", class: "btn btn-default", remote: true %>
+  <%= link_to fa_icon("caret-down"), vote_answer_path(answer, value: -1), method: "post", class: "btn btn-default answer-vote-down", remote: true %>
+</div>
